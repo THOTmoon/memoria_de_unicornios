@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const controlVolumen = document.getElementById('control-volumen');
 
   // --- SONIDOS DEL JUEGO ---
-  const audioVoltear = new Audio('audio/Voltear.mp3');
+  const audiovoltear = new Audio('audio/voltear.mp3');
   const audioVictoria = new Audio('audio/Victoria.mp3');
   const audioError = new Audio('audio/Error.mp3');
   // --- Música de fondo (instancia de Audio) ---
@@ -264,3 +264,4 @@ function mostrarPantallaInicio() {
 
 
 }); // --- Fin del addEventListener 'DOMContentLoaded' ---
+
