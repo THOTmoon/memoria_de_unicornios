@@ -45,7 +45,7 @@ body {
   height: 100%;
   max-width: 450px;
   max-height: 800px;
-  background-image: url('images/Fondoanimal.png');
+  background-image: url('images/fondoanimal.png');
   background-size: cover;
   background-position: center;
   /* Mantener el centrado del contenido (.boton-jugar) dentro del splash-container */
@@ -433,3 +433,4 @@ h1 {
     /* border-radius: 10px; */
 
 }
+
