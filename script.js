@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- DATOS Y VARIABLES DE ESTADO DEL JUEGO ---
   const imagenes = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg", "foto6.jpg"];
   const audiosPorImagen = {
-    "foto1.jpg": "audio/Bebeperro.mp3",
-    "foto2.jpg": "audio/Bebepanda.mp3",
-    "foto3.jpg": "audio/Bebeleon.mp3",
-    "foto4.jpg": "audio/Bebeelefante.mp3",
-    "foto5.jpg": "audio/Bebegato.mp3",
-    "foto6.jpg": "audio/Bebemono.mp3"
+    "foto1.jpg": "audio/bebeperro.mp3",
+    "foto2.jpg": "audio/bebepanda.mp3",
+    "foto3.jpg": "audio/bebeleon.mp3",
+    "foto4.jpg": "audio/bebeelefante.mp3",
+    "foto5.jpg": "audio/bebegato.mp3",
+    "foto6.jpg": "audio/bebemono.mp3"
   };
   // Array con los nombres de los GIF de celebración (¡Actualizado a .gif!)
   const gifsCelebracion = [
@@ -260,6 +260,7 @@ function mostrarPantallaInicio() {
   } else {
       console.warn("Algunos elementos de control de audio no se encontraron en el DOM.");
   }
+
 
 
 }); // --- Fin del addEventListener 'DOMContentLoaded' ---
