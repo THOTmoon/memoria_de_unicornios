@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mensajeDisplay = document.getElementById('mensaje');
   const botonReiniciar = document.getElementById('reiniciar');
   // --- Selectores para la pantalla de victoria ---
-  const pantallavictoria = document.getElementById('pantalla-victoria');
+  const pantallaVictoria = document.getElementById('pantalla-victoria');
   const elementoCelebracion = document.getElementById('video-celebracion');
   // --- Selectores para controles de audio ---
   const botonVolumen = document.getElementById('boton-volumen');
@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const controlVolumen = document.getElementById('control-volumen');
 
   // --- SONIDOS DEL JUEGO ---
-  const audiovoltear = new Audio('audio/voltear.mp3');
-  const audiovictoria = new Audio('audio/victoria.mp3');
-  const audioError = new Audio('audio/Error.mp3');
+  const audioVoltear = new Audio('audio/voltear.mp3');
+  const audioVictoria = new Audio('audio/victoria.mp3');
+  const audioError = new Audio('audio/error.mp3');
   // --- Música de fondo (instancia de Audio) ---
   let musicaFondo = new Audio(); // Se configurará la src en iniciarPartida
   musicaFondo.loop = true;
@@ -264,5 +264,6 @@ function mostrarPantallaInicio() {
 
 
 }); // --- Fin del addEventListener 'DOMContentLoaded' ---
+
 
 
