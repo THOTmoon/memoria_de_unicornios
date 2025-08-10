@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Juego de Memoria</title>
+    
+    <!-- Importamos las fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Enlace a tu hoja de estilos -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Pantalla de Inicio -->
+    <div id="pantalla-inicio">
+        <div class="splash-container">
+            <button id="boton-jugar">Jugar</button>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal del Juego -->
+    <main id="juego-principal" class="hidden">
+        <h1>Juego de Memoria</h1>
+        
+        <!-- INFO DEL JUEGO (Mejora Semántica con <ul>) -->
+        <ul class="info-juego">
+            <li>Tiempo: <span id="tiempo">0</span>s</li>
+            <li>Intentos: <span id="intentos">0</span></li>
+        </ul>
+        
+        <div class="tablero" id="tablero"></div>
+        <div id="mensaje" class="mensaje"></div>
+        <button id="reiniciar">Reiniciar Juego</button>
+    </main>
+    
+    <!-- ================================== -->
+    <!-- === NUEVA PANTALLA DE VICTORIA === -->
+    <!-- ================================== -->
+    <div id="pantalla-victoria" class="hidden">
+        <!-- Reemplazamos <video> por <img> -->
+        <img id="video-celebracion" src="ruta/a/tu/archivo/celebracion.gif" width="100%">
+        <!-- Asegúrate de reemplazar "ruta/a/tu/archivo/celebracion.gif" con la ruta real de tu GIF -->
+    </div>
+    
+    <!-- ================================== -->
+    
+    <!-- Elementos de Audio -->
+    <audio id="sonido-inicio" src="audio/start-sound.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

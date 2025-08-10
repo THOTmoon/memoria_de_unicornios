@@ -1,0 +1,434 @@
+/* ======================================================== */
+/* --- CÓDIGO CSS ACTUALIZADO --- */
+/* ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  background-image: url('images/Fondoanimal.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #3F51B5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* --- Estilos Pantalla de Inicio --- */
+#pantalla-inicio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Mantiene .splash-container centrado */
+  z-index: 100;
+  transition: opacity 0.5s ease;
+}
+
+.splash-container {
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 800px;
+  background-image: url('images/Fondoanimal.png');
+  background-size: cover;
+  background-position: center;
+  /* Mantener el centrado del contenido (.boton-jugar) dentro del splash-container */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra el botón dentro del splash-container */
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  /* NO aplicar margin-top aquí */
+}
+
+#boton-jugar {
+  padding: 15px 40px;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: white;
+  background-color: #007BFF;
+  border: 3px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  /* --- AJUSTE DE POSICIÓN VERTICAL DEL BOTÓN SOLAMENTE --- */
+  margin-top: -330px; /* Ajusta este valor (ej: 100px, 200px) para mover solo el botón hacia abajo */
+  /* ------------------------------- */
+  /* Centrado horizontal implícito por el flexbox del padre (.splash-container) */
+  /* margin-left: auto; margin-right: auto; no es necesario aquí */
+}
+
+#boton-jugar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Estructura Principal del Juego --- */
+#juego-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  color: #fc4c4c;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* INFO DEL JUEGO (Con <ul>) - Oculto por ahora */
+.info-juego {
+  display: none;
+  list-style-type: none; /* Quita los puntos de la lista */
+  padding: 0;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+#reiniciar {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #21abeb;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px #470542ef;
+  transition: all 0.3s ease;
+}
+
+#reiniciar:hover {
+  background-color: #254ed4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Tablero y Cartas --- */
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12px;
+  width: 100%;
+  margin-top: 15px;
+  perspective: 1000px;
+}
+
+.carta {
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  border-radius: 8px;
+  transform-style: preserve-3d;
+}
+
+.carta-flip {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.carta.abierta .carta-flip,
+.carta.emparejada .carta-flip {
+  transform: rotateY(180deg);
+}
+
+.frente, .atras {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.frente {
+  background: url('images/interrogacion.png') no-repeat center center / cover;
+  background-color: #607D8B;
+}
+
+.atras {
+  background-color: #BBDEFB;
+  transform: rotateY(180deg);
+}
+
+/* --- Mensaje Final y Clases de Utilidad --- */
+.mensaje {
+  margin-top: 20px;
+  font-size: 1.3em;
+  color: #FFC107;
+  font-weight: 700;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ======================================= */
+/* === NUEVOS ESTILOS PANTALLA VICTORIA === */
+/* ======================================= */
+#pantalla-victoria {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200; /* Asegura que esté por encima de todo */
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+#pantalla-victoria.hidden {
+    opacity: 0;
+    pointer-events: none; /* Evita clics en el overlay cuando está oculto */
+}
+
+#video-celebracion {
+  max-width: 90%;
+  max-height: 90%;
+  width: 450px; /* Ancho consistente con el contenedor del juego */
+  border: 4px solid #FFC107;
+  border-radius: 15px;
+  box-shadow: 0 0 40px rgba(255, 193, 7, 0.7);
+}
+
+/* Ocultamos los contadores, puedes cambiar 'none' por 'flex' si quieres mostrarlos */
+.info-juego {
+  display: none; 
+}
+
+/* --- Estilos para el Control de Audio --- */
+.control-audio {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8em; /* Tamaño del emoji */
+    cursor: pointer;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    padding: 5px; /* Pequeño padding para área de clic */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    transition: background-color 0.2s ease; /* Transición suave para hover */
+}
+.control-audio:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente al pasar el ratón */
+}
+
+/* --- Contenedor para los controles de audio --- */
+.controles-audio {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el botón y el slider */
+    z-index: 10;
+}
+
+/* --- Estilos para el Botón de Mute --- */
+.control-audio-btn {
+    /* Hereda muchos estilos de .control-audio si ya existía, o define aquí */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+.control-audio-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Estilos para el Control de Volumen (Slider) --- */
+.control-volumen {
+    width: 80px; /* Ancho del slider */
+    height: 5px; /* Grosor de la barra */
+    -webkit-appearance: none; /* Elimina estilo por defecto */
+    appearance: none;
+    background: rgba(255, 255, 255, 0.3); /* Color de fondo de la barra */
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo del "pulgar" o control deslizante en Webkit */
+.control-volumen::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #007BFF; /* Color del pulgar */
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Estilo del "pulgar" para Firefox */
+.control-volumen::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #007BFF;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* --- Estilos para el Botón de Volumen --- */
+#boton-volumen {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8em; /* Tamaño del emoji */
+    cursor: pointer;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    padding: 5px; /* Pequeño padding para área de clic */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    transition: background-color 0.2s ease; /* Transición suave para hover */
+}
+#boton-volumen:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente al pasar el ratón */
+}
+
+/* --- Estilos para el Control Deslizante Vertical --- */
+#control-volumen-vertical {
+    position: absolute;
+    top: 40px; /* Ajusta según sea necesario */
+    right: 15px;
+    width: 20px; /* Ancho fijo para el control vertical */
+    height: 150px; /* Altura del control vertical */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.2s ease;
+}
+.control-volumen-vertical {
+    writing-mode: vertical-lr; /* Hace que el deslizador sea vertical */
+    width: 4px; /* Gira el deslizador para que sea vertical */
+    height: 150px; /* Altura total del deslizador */
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.5);
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.control-volumen-vertical::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007BFF;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.control-volumen-vertical::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007BFF;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+/* --- Estilos Pantalla de Inicio --- */
+#pantalla-inicio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 105; /* MENOR que el del logo */
+  /* Añadimos opacidad 0 y transición */
+  opacity: 0; /* Invisible inicialmente */
+  transition: opacity 1s ease; /* Transición suave para aparecer */
+  /* transition de opacity ya estaba, la dejamos */
+}
+
+/* --- Estilos Pantalla de Logo --- */
+#pantalla-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* O el color de fondo deseado para el logo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 110; /* Más alto que pantalla-inicio */
+    transition: opacity 1.5s ease; /* Transición para el fade */
+}
+#pantalla-logo.fade-out {
+    opacity: 0;
+}
+#logo-marca {
+    max-width: 80%;
+    max-height: 80%;
+    /* Ajusta estos estilos según el aspecto deseado para tu logo */
+    /* box-shadow: 0 0 20px rgba(0,0,0,0.2); */
+    /* border-radius: 10px; */
+}
