@@ -13,7 +13,7 @@
 body {
   font-family: 'Nunito', sans-serif;
   text-align: center;
-  background-image: url('images/Fondoanimal.png');
+  background-image: url('images/fondoanimal.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -431,4 +431,5 @@ h1 {
     /* Ajusta estos estilos según el aspecto deseado para tu logo */
     /* box-shadow: 0 0 20px rgba(0,0,0,0.2); */
     /* border-radius: 10px; */
+
 }
